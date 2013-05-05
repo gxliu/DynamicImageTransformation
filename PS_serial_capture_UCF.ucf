@@ -1,0 +1,31 @@
+Net "clock" LOC=V10 | IOSTANDARD=LVCMOS33;
+Net "clock" TNM_NET = sys_clk_pin;
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100 MHz;#tried setting this at 50mhz but got flicker.  Most likely reason is that this line of code does not effect the clock at all
+
+# i and o is with respect to the FPGA.  
+# "_i" means it is going into the fpga.
+# "_o" means it is going out of the fpga.
+#JA
+#PS_DAT_i
+Net "ps_dat_i" LOC = T12 | IOSTANDARD = LVCMOS33 | PULLUP; #Bank = 2, pin name = IO_L19P, Sch name = JA1
+#PS_CMD_o
+Net "ps_cmd_o" LOC = V12 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L19N, Sch name = JA2  
+
+#JC
+#PS_ATT_o
+Net "ps_att_o" LOC = H3 | IOSTANDARD = LVCMOS33; #Bank = 3, pin name = IO_L44N_GCLK20_M3A6, Sch name = JC1
+#PS_CLK_o
+Net "ps_clk_o" LOC = L7 | IOSTANDARD = LVCMOS33; #Bank = 3, pin name = IO_L45P_M3A3, Sch name = JC2
+##PS_ACK_i
+#Net "A_i<6>" LOC = K6 | IOSTANDARD = LVCMOS33 | PULLUP; #Bank = 3, pin name = IO_L45N_M3ODT, Sch name = JC3
+
+# Leds for the REG Data
+# d-pad (31:28)and R and L  (35:32)
+Net "ps_data_arr_o<28>" LOC = U16 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L2P_CMPCLK, Sch name = LD0
+Net "ps_data_arr_o<29>" LOC = V16 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L2N_CMPMOSI, Sch name = LD1
+Net "ps_data_arr_o<30>" LOC = U15 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L5P, Sch name = LD2
+Net "ps_data_arr_o<31>" LOC = V15 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L5N, Sch name = LD3
+Net "ps_data_arr_o<32>" LOC = M11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L15P, Sch name = LD4
+Net "ps_data_arr_o<33>" LOC = N11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L15N, Sch name = LD5
+Net "ps_data_arr_o<34>" LOC = R11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L16P, Sch name = LD6
+Net "ps_data_arr_o<35>" LOC = T11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L16N_VREF, Sch name = LD7
